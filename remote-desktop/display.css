@@ -1,0 +1,21 @@
+#display {
+  padding: 0 !important;
+  margin: 0 !important;
+  /*overflow: hidden;*/
+  -moz-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  color: black;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 16px;
+  line-height: 16px;
+  text-rendering: optimizeLegibility;
+}
+
+.measured-text {
+  position: absolute;
+  visibility: hidden;
+  width: auto;
+  height: auto;
+  white-space: nowrap;
+}

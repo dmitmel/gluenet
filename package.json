@@ -1,0 +1,43 @@
+{
+  "name": "gluenet",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GlueNet/gluenet.git"
+  },
+  "scripts": {
+    "tsc": "node --max_old_space_size=4096 ./node_modules/.bin/tsc",
+    "tsc-w": "npm run tsc -- -w",
+    "tslint": "tslint -c tslint.json -p tsconfig.json --type-check -t codeFrame",
+    "typedoc": "typedoc src --name GlueNet --mode modules --theme minimal --excludeExternals --excludeNotExported --excludePrivate --listInvalidSymbolLinks --includeDeclarations --out docs",
+    "madge": "madge --image modules.svg --extensions ts src",
+    "start": "cross-env DEBUG=* supervisor dist/drawer.js"
+  },
+  "author": "dmitmel <dmytro.meleshko@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/GlueNet/gluenet/issues"
+  },
+  "homepage": "https://github.com/GlueNet/gluenet#readme",
+  "dependencies": {
+    "debug": "^3.0.0",
+    "lodash": "^4.17.4",
+    "request-ip": "^2.0.2",
+    "supports-color": "^4.2.1",
+    "ws": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/debug": "0.0.30",
+    "@types/lodash": "^4.14.74",
+    "@types/request-ip": "0.0.31",
+    "@types/ws": "^3.0.2",
+    "cross-env": "^5.0.5",
+    "madge": "^2.2.0",
+    "supervisor": "^0.12.0",
+    "tslint": "^5.7.0",
+    "typedoc": "^0.8.0",
+    "typescript": "^2.5.2"
+  }
+}
