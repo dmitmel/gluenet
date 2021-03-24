@@ -8,8 +8,6 @@
     "declaration": false,
     "sourceMap": true,
     "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "strict": true,
     "types": [],
     "outDir": "dist",

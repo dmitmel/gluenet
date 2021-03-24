@@ -2,7 +2,7 @@ import { Server } from './gluenet/server';
 import { Client } from './gluenet/client';
 import { Device } from './gluenet/device';
 import { Display } from './gluenet/device/display';
-import { Mouse, PressEvent as MousePressEvent } from './gluenet/device/mouse';
+import { Mouse, MousePressEvent } from './gluenet/device/mouse';
 import { Point, line } from './gluenet/graphics';
 
 const server = new Server({ host: '0.0.0.0', port: 8080 });

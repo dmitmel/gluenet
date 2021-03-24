@@ -1,12 +1,12 @@
-import { Server } from './glueos/server';
-import { Client } from './glueos/client';
-import { Device } from './glueos/device';
-import * as display from './glueos/device/display';
-import * as input from './glueos/device/input';
+import { Server } from './gluenet/server';
+import { Client } from './gluenet/client';
+import { Device } from './gluenet/device';
+import { Display } from './gluenet/device/display';
+import { Keyboard, KeyboardEvent } from './gluenet/device/keyboard';
 
-const server = new Server();
+const server = new Server({ host: '0.0.0.0', port: 8080 });
 
-let displays: display.Display[] = [];
+let displays: Display[] = [];
 
 function write(x: number, y: number, str: string): void {
     for (let display of displays) display.write(x, y, str);
@@ -138,12 +138,12 @@ text.cursor.startBlinking();
 
 server.on('connection', (client: Client) => {
     client.on('deviceAdded', (device: Device) => {
-        if (device.type == display.DEVICE_TYPE) onDisplayAdded(device as display.Display);
-        else if (device.type == input.DEVICE_TYPE) onInputAdded(device as display.Display);
+        if (device instanceof Display) onDisplayAdded(device);
+        else if (device instanceof Keyboard) onInputAdded(device);
     });
 });
 
-function onDisplayAdded(display: display.Display): void {
+function onDisplayAdded(display: Display): void {
     displays.push(display);
 
     display.on('resize', () => {
@@ -151,8 +151,8 @@ function onDisplayAdded(display: display.Display): void {
     });
 }
 
-function onInputAdded(input: input.Input): void {
-    input.on('keydown', (event: input.KeyboardEvent) => {
+function onInputAdded(input: Keyboard): void {
+    input.on('keydown', (event: KeyboardEvent) => {
         switch (event.key) {
             case 'ArrowUp':
                 text.cursor.moveBy(0, -1);
@@ -179,9 +179,7 @@ function onInputAdded(input: input.Input): void {
         }
     });
 
-    input.on('keypress', (event: input.KeyboardEvent) => {
+    input.on('keydown', (event: KeyboardEvent) => {
         if (event.key.length == 1) text.insert(event.key);
     });
 }
-
-server.listen({ host: '192.168.1.160', port: 8080 });

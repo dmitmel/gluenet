@@ -9,8 +9,10 @@ $(function() {
 
   var display = new Display($display);
 
+  var textEncoder = new TextEncoder();
+
   ///////////////////////// SETTING UP WEBSOCKET /////////////////////////
-  var ws = new WebSocket('ws://192.168.1.5:8080/');
+  var ws = new WebSocket('ws://' + location.hostname + ':8080/');
 
   // close websocket when user closes page
   $window.on('beforeunload', function() {
@@ -51,6 +53,7 @@ $(function() {
     if (packet[0] == 0) {
       send(new Uint8Array([1, 0, 0]));
       send(new Uint8Array([1, 1, 1]));
+      send(new Uint8Array([1, 2, 2]));
       display.clear();
       send(createResizeEvent());
     } else if (packet[0] == 4) {
@@ -62,9 +65,9 @@ $(function() {
         } else if (eventID == 3) {
           display.write(packet[3], packet[5], decoder.decode(packet.slice(7)));
         } else if (eventID == 5) {
-          display.fill(data.x, data.y, data.w, data.h, data['char']);
+          display.fill(packet[3], packet[5], packet[7], packet[9], decoder.decode(packet.slice(11)));
         } else if (eventID == 6) {
-          display.copy(data.x, data.y, data.w, data.h, data.tx, data.ty);
+          display.copy(packet[3], packet[5], packet[7], packet[9], packet[11], packet[13]);
         }
       }
     }
@@ -127,14 +130,15 @@ $(function() {
 
   ///////////////////////// KEYBOARD EVENTS /////////////////////////
   function createKeyboardEvent(evt) {
-    return new Uint8Array();
+    let keyEncoded = textEncoder.encode(evt.key);
 
-    // return new Uint8Array([
-    //   3,
-    //   1,
-    //   evt.type == 'keyup' ? 4 : evt.type == 'keypress' ? 5 : 3,
-    //   evt.key
-    // ]);
+    return new Uint8Array([
+      3,
+      2,
+      evt.type == 'keyup' ? 1 : evt.type == 'keypress' ? 2 : 0,
+      keyEncoded.length,
+      ...keyEncoded
+    ]);
 
     // return {
     //   type: 3,
@@ -152,15 +156,15 @@ $(function() {
   }
 
   $window.keydown(function(evt) {
-    // send(createKeyboardEvent(evt));
-    // return false;
+    send(createKeyboardEvent(evt));
+    return false;
   });
   $window.keyup(function(evt) {
-    // send(createKeyboardEvent(evt));
-    // return false;
+    send(createKeyboardEvent(evt));
+    return false;
   });
   $window.keypress(function(evt) {
-    // send(createKeyboardEvent(evt));
-    // return false;
+    send(createKeyboardEvent(evt));
+    return false;
   });
 });

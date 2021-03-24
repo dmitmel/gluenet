@@ -44,12 +44,6 @@ export enum MouseButton {
   RIGHT
 }
 
-export interface PressEvent extends Event {
+export interface MousePressEvent extends Event {
   button: MouseButton;
 }
-
-// export interface KeyboardEvent {
-//   code: number;
-//   key: string;
-//   modifiers: number;
-// }
