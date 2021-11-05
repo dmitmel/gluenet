@@ -1,0 +1,30 @@
+@import '../scss/variables';
+
+$search-btn_size: $input-height-inner - $search-btn_margin-y * 2;
+
+.search {
+  position: relative;
+  flex-grow: 1;
+
+  &__input {
+    $search__input_padding-y: $search-btn_size + $search-btn_margin-x * 2;
+    padding-right: $search__input_padding-y;
+    padding-left: $search__input_padding-y;
+  }
+
+  .btn {
+    margin: $search-btn_margin-y $search-btn_margin-x;
+    width: $search-btn_size;
+    height: $search-btn_size;
+    position: absolute;
+    top: $input-btn-border-width;
+  }
+
+  &__submit {
+    left: $input-btn-border-width;
+  }
+
+  &__clear {
+    right: $input-btn-border-width;
+  }
+}

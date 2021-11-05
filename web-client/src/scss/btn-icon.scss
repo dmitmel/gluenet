@@ -1,0 +1,18 @@
+@import './variables';
+
+.btn-icon {
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: none;
+
+  &:hover,
+  &:focus {
+    background: rgba(0, 0, 0, 0.071);
+  }
+
+  &:focus,
+  &:active {
+    box-shadow: none;
+  }
+}

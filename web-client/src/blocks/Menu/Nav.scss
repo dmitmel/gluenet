@@ -1,0 +1,17 @@
+@import '../../scss/variables';
+
+.menu-nav {
+  background: $menu-nav_background;
+
+  hr {
+    margin: $nav-link-padding-y 0;
+  }
+
+  &__items {
+    width: $menu_expanded_width;
+    height: calc(100vh - #{$menu-header_height});
+    padding: $nav-link-padding-y 0;
+    overflow: auto;
+    list-style: none;
+  }
+}

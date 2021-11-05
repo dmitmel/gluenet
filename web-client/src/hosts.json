@@ -1,0 +1,52 @@
+{
+  "hosts": [
+    {
+      "id": 0,
+      "alias": "WebSocket echo server",
+      "hostname": "echo.websocket.org",
+      "port": 80,
+      "tags": ["remote", "echo"],
+      "secure": false
+    },
+    {
+      "id": 1,
+      "alias": "host 1",
+      "hostname": "192.168.1.2",
+      "port": 8080,
+      "tags": ["local", "android"],
+      "secure": false
+    },
+    {
+      "id": 3,
+      "alias": "host 3",
+      "hostname": "192.168.1.2",
+      "port": 8080,
+      "tags": ["remote", "ubuntu"],
+      "secure": false
+    },
+    {
+      "id": 2,
+      "alias": "host 2",
+      "hostname": "192.168.1.2",
+      "port": 8080,
+      "tags": ["remote", "windows"],
+      "secure": false
+    },
+    {
+      "id": 4,
+      "alias": "host 4",
+      "hostname": "192.168.1.2",
+      "port": 8080,
+      "tags": ["remote", "osx"],
+      "secure": false
+    },
+    {
+      "id": 5,
+      "alias": "host 5",
+      "hostname": "192.168.1.2",
+      "port": 8080,
+      "tags": ["remote", "centos"],
+      "secure": false
+    }
+  ]
+}

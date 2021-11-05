@@ -1,0 +1,59 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+
+// =============================================================================
+// Color system
+// =============================================================================
+$color-change-amount: 15%;
+$primary-color: #4caf50; // green 500
+$primary-color-light: lighten($primary-color, $color-change-amount);
+$primary-color-dark: darken($primary-color, $color-change-amount);
+$secondary-color: #1976d2; // blue 700
+$secondary-color-light: lighten($secondary-color, $color-change-amount);
+$secondary-color-dark: darken($secondary-color, $color-change-amount);
+// prettier-ignore
+$theme-colors: map-merge($theme-colors, (
+  primary: $primary-color,
+  primary-light: $primary-color-light,
+  primary-dark: $primary-color-dark,
+  secondary: $secondary-color,
+  secondary-light: $secondary-color-light,
+  secondary-dark: $secondary-color-dark
+));
+
+// =============================================================================
+// Fonts
+// =============================================================================
+$font-family-monospace: 'Roboto Mono', Menlo, Monaco, Consolas,
+  'Liberation Mono', monospace;
+$font-family-base: $font-family-monospace;
+
+$font-size-icon-sm: 0.75rem;
+$font-size-icon: 1rem;
+$font-size-icon-lg: 1.5rem;
+
+// =============================================================================
+// Menu
+// =============================================================================
+$menu_collapsed_width: 4rem;
+$menu_expanded_width: 18.75rem;
+$menu_transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1); // Fast out, slow in
+
+// Menu header
+// =============================================================================
+$menu-header_height: 4rem;
+$menu-header__toggle-menu_size: 3rem;
+
+// Menu nav
+// =============================================================================
+$menu-nav_background: #292c33;
+$menu-nav-link_color: lighten($menu-nav_background, 50%);
+$menu-nav-link_hover_background: lighten($menu-nav_background, 15%);
+$menu-nav-link_active_background: darken($secondary-color, 5%);
+$menu-nav-link_active_color: #fff;
+
+// =============================================================================
+// Search
+// =============================================================================
+$search-btn_margin-y: 0.25rem;
+$search-btn_margin-x: 0.45rem;

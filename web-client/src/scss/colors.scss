@@ -1,0 +1,9 @@
+@import './variables';
+@import './functions';
+
+@each $color-name, $color in $theme-colors {
+  .bg-#{$color-name},
+  .bg-#{$color-name}-contrast {
+    color: contrast-color($color);
+  }
+}

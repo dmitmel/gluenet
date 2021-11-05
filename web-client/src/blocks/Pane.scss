@@ -1,0 +1,20 @@
+@import '../scss/variables';
+
+.pane {
+  transition: margin-left $menu_transition;
+  margin-left: $menu_collapsed_width;
+  .menu_expanded + & {
+    margin-left: $menu_expanded_width;
+  }
+
+  &-content {
+    height: calc(100vh - #{$menu-header_height});
+    overflow: auto;
+  }
+
+  &-header {
+    display: flex;
+    height: $menu-header_height;
+    align-items: center;
+  }
+}

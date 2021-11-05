@@ -1,0 +1,11 @@
+@import './variables';
+@import 'bootstrap/scss/bootstrap';
+@import './colors';
+@import './btn-icon';
+
+input[type='button'],
+input[type='submit'],
+input[type='reset'],
+button {
+  cursor: pointer;
+}

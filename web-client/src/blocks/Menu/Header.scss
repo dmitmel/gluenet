@@ -1,0 +1,38 @@
+@import '../../scss/variables';
+
+.menu-header {
+  width: $menu_expanded_width;
+  height: $menu-header_height;
+  $menu-header_padding-y: (
+      $menu-header_height - $menu-header__toggle-menu_size
+    ) / 2;
+  padding: $menu-header_padding-y 0;
+
+  &__toggle-menu {
+    width: $menu-header__toggle-menu_size;
+    height: $menu-header__toggle-menu_size;
+    font-size: $font-size-icon-lg;
+
+    // distance from the left/right side of icon to the left/right side of menu
+    // header
+    $menu-header__toggle-menu_x-dist: (
+        $menu_collapsed_width - $menu-header__toggle-menu_size
+      ) / 2;
+    margin-left: $menu-header__toggle-menu_x-dist;
+    margin-right: $menu-header__toggle-menu_x-dist + 0.5rem;
+  }
+
+  &__brand {
+    display: inline;
+    vertical-align: middle;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .menu_collapsed & {
+      visibility: hidden;
+    }
+  }
+}

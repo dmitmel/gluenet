@@ -1,0 +1,36 @@
+.too-small-device {
+  padding: 1.875rem;
+
+  &__message {
+    margin: 1.25rem 0;
+  }
+
+  .fa-stack {
+    font-size: 6em;
+    user-select: none;
+  }
+
+  .fa-mobile {
+    animation: rotate-device 2.5s ease-in-out infinite;
+  }
+
+  .fa-picture-o {
+    font-size: 0.45em;
+  }
+}
+
+@keyframes rotate-device {
+  0%,
+  20% {
+    transform: rotate(0deg);
+  }
+
+  70%,
+  90% {
+    transform: rotate(-90deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}

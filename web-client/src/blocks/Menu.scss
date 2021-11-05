@@ -1,0 +1,16 @@
+// https://startbootstrap.com/template-overviews/simple-sidebar
+@import '../scss/variables';
+
+.menu {
+  // stick menu to the left
+  position: fixed;
+  // labels are hidden when menu collapses
+  overflow: hidden;
+  z-index: 1;
+
+  transition: width $menu_transition;
+  width: $menu_collapsed_width;
+  &_expanded {
+    width: $menu_expanded_width;
+  }
+}

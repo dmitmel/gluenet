@@ -1,0 +1,33 @@
+@import '../../../scss/variables';
+
+.menu-nav-link {
+  color: $menu-nav-link_color;
+
+  &_active,
+  &:hover,
+  &:focus {
+    color: $menu-nav-link_active_color;
+  }
+
+  &:focus:not(&_active),
+  &:hover:not(&_active) {
+    outline: none;
+    background: $menu-nav-link_hover_background;
+  }
+
+  &_active {
+    background: $menu-nav-link_active_background;
+  }
+
+  &__icon {
+    width: $font-size-icon-lg;
+    font-size: $font-size-icon-lg;
+
+    // distance from the left/right side of icon to the left/right side of menu
+    $nav-link__icon_x-dist: ($menu_collapsed_width - $font-size-icon-lg) / 2;
+    margin-left: $nav-link__icon_x-dist - $nav-link-padding-x;
+    margin-right: $nav-link__icon_x-dist + 0.5rem;
+
+    vertical-align: bottom;
+  }
+}
